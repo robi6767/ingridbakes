@@ -273,9 +273,9 @@ function Navbar() {
               : "pointer-events-none opacity-0"
           }`}
         >
-          {/* Backdrop blur */}
+          {/* Backdrop blur removed */}
           <div
-            className={`absolute inset-0 bg-black/30 backdrop-blur-[6px] transition-all duration-500 ${
+            className={`absolute inset-0 bg-black/30 transition-all duration-500 ${
               open ? "opacity-100" : "opacity-0"
             }`}
             aria-hidden="true"
@@ -344,17 +344,55 @@ function Navbar() {
 }
 
 // ====== Hero Section ======
-// Parallax effect removed for static background (fixes unwanted motion and build issues)
 function Hero() {
   const ref = useFadeInOnScroll(0);
 
   return (
     <section className="relative h-[90vh] sm:min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Static background image */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{ transform: "scale(1.04)" }}
-      >
+      {/* Artistic navy/gold background shapes, always visible and behind content */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none">
+        {/* Navy abstract wave */}
+        <svg
+          className="absolute left-[-8vw] top-[8vh] w-[40vw] h-[40vw] min-w-[120px] min-h-[120px] max-w-[320px] max-h-[320px] opacity-25"
+          viewBox="0 0 400 400"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M50,350 Q200,50 350,350"
+            stroke="#1B2940"
+            strokeWidth="18"
+            strokeLinecap="round"
+            fill="none"
+          />
+        </svg>
+        {/* Gold dots */}
+        <svg
+          className="absolute right-[6vw] bottom-[8vh] w-[18vw] h-[18vw] min-w-[70px] min-h-[70px] max-w-[180px] max-h-[180px] opacity-15"
+          viewBox="0 0 200 200"
+          fill="none"
+          aria-hidden="true"
+        >
+          <circle cx="100" cy="100" r="80" stroke="#e6c76e" strokeWidth="6" strokeDasharray="8 12" />
+          <circle cx="100" cy="100" r="30" fill="#D4AF37" fillOpacity="0.08" />
+        </svg>
+        {/* Gold wave bottom */}
+        <svg
+          className="absolute left-1/2 bottom-[4vh] -translate-x-1/2 w-[80vw] h-[10vw] min-w-[180px] min-h-[24px] max-w-[700px] max-h-[80px] opacity-10"
+          viewBox="0 0 800 100"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M0,80 Q200,20 400,80 T800,80"
+            stroke="#D4AF37"
+            strokeWidth="12"
+            fill="none"
+          />
+        </svg>
+      </div>
+      {/* Sharp background image */}
+      <div className="absolute inset-0 z-10">
         <Image
           src="/imgs/from-the-outside.jpg"
           alt="Ingrid Bakes exterior"
@@ -362,60 +400,35 @@ function Hero() {
           priority
           className="object-cover object-right sm:object-center"
           sizes="100vw"
+          style={{ animation: "heroZoom 18s ease-in-out infinite alternate" }}
         />
-        {/* Decorative gold pattern overlay */}
-        <div className="absolute inset-0 pointer-events-none bg-[url('/imgs/gold-pattern.png')] bg-repeat opacity-10 mix-blend-soft-light" />
-        {/* Subtle gradient overlay for luxury */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#fff8e1]/80 via-transparent to-[#D4AF37]/10 pointer-events-none" />
+        {/* Subtle gradient for text readability, only one and not foggy */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent" />
+        {/* Gold pattern overlay for texture */}
+        <div className="absolute inset-0 bg-[url('/imgs/gold-pattern.png')] bg-repeat opacity-10 mix-blend-soft-light" />
       </div>
-      {/* Gradient overlay for readability */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/40 via-transparent to-black/20 pointer-events-none" />
-      {/* Decorative gold swirl */}
-      <svg
-        className="absolute right-4 bottom-4 w-20 sm:w-32 h-20 sm:h-32 opacity-10 pointer-events-none"
-        viewBox="0 0 100 100"
-        fill="none"
-      >
-        <path
-          d="M20 80 Q50 20 80 80"
-          stroke="#D4AF37"
-          strokeWidth="3"
-          strokeLinecap="round"
-          fill="none"
-        />
-        <circle
-          cx="50"
-          cy="50"
-          r="8"
-          fill="#D4AF37"
-          fillOpacity="0.08"
-        />
-      </svg>
       {/* Content */}
       <div
         ref={ref}
         className="relative z-20 px-4 sm:px-6 text-center max-w-3xl flex flex-col items-center"
       >
-        {/* Creamy rectangle with gold border */}
         <div
-          className="bg-[#fff8e1]/80 rounded-xl px-4 sm:px-8 py-8 sm:py-10 shadow-2xl border-2 border-[#D4AF37] relative backdrop-blur-0 animate-fade-in-up"
+          className="bg-[#fff8e1]/95 rounded-xl px-4 sm:px-8 py-8 sm:py-10 shadow-2xl border-2 border-[#D4AF37] relative animate-fade-in-up"
           style={{
             boxShadow:
               "0 8px 32px 0 rgba(212,175,55,0.10), 0 2px 8px 0 rgba(0,0,0,0.10)",
           }}
         >
-          {/* Decorative gold shine top left */}
           <span className="absolute top-0 left-0 w-12 h-2 bg-gradient-to-r from-[#D4AF37]/60 to-transparent rounded-t-xl" />
           <h1 className="font-serif text-2xl sm:text-4xl md:text-6xl font-bold text-[#1B3A57] drop-shadow-[0_10px_25px_rgba(212,175,55,0.25)] mb-4 leading-tight animate-fade-in-up">
             Ingrid Bakes
           </h1>
           <p
-            className="text-base sm:text-lg md:text-2xl text-[#1B3A57]/90 max-w-2xl mx-auto mb-6 sm:mb-8 drop-shadow font-sans leading-relaxed animate-fade-in-up"
+            className="text-base sm:text-lg md:text-2xl text-[#1B3A57] max-w-2xl mx-auto mb-6 sm:mb-8 drop-shadow font-sans leading-relaxed animate-fade-in-up"
             style={{ animationDelay: "0.15s" }}
           >
             Luxurious cakes &amp; pastries, crafted with Mediterranean soul. Cozy interiors, golden moments.
           </p>
-          {/* Buttons stack vertically on mobile, inline on desktop */}
           <div
             className="flex flex-col gap-2 sm:flex-row sm:gap-4 justify-center w-full animate-fade-in-up"
             style={{ animationDelay: "0.3s" }}
@@ -445,6 +458,10 @@ function Hero() {
             transform: translateY(0);
           }
         }
+        @keyframes heroZoom {
+          0% { transform: scale(1);}
+          100% { transform: scale(1.04);}
+        }
       `}</style>
     </section>
   );
@@ -458,9 +475,9 @@ function QuickIntro() {
       ref={ref}
       className="py-4 sm:py-10 md:py-16 bg-gradient-to-br from-[#fff8e1] via-[#f7f5f2] to-[#fff8e1] relative overflow-hidden"
     >
-      {/* Decorative gradient/pattern overlay */}
-      <div className="absolute inset-0 pointer-events-none bg-[url('/imgs/gold-pattern.png')] bg-repeat opacity-10 mix-blend-soft-light" />
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-[#fff8e1]/60 via-transparent to-[#D4AF37]/10" />
+      {/* Decorative gold pattern, subtle and behind content */}
+      <div className="absolute inset-0 pointer-events-none bg-[url('/imgs/gold-pattern.png')] bg-repeat opacity-10 mix-blend-soft-light z-0" />
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-[#fff8e1]/60 via-transparent to-[#D4AF37]/10 z-0" />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center relative z-10">
         <h2 className="font-serif text-lg sm:text-2xl md:text-3xl font-bold text-[#1B3A57] mb-2 drop-shadow-[0_2px_8px_rgba(212,175,55,0.15)] animate-fade-in">
           Authentic &amp; Artisanal
@@ -506,7 +523,7 @@ function GalleryImageCard({
         src={src}
         alt={alt}
         fill
-        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+        className="object-cover object-center group-hover:scale-105 group-hover:rotate-1 transition-transform duration-500"
         sizes="100vw"
       />
       <div className="absolute inset-0 bg-[#D4AF37]/10 pointer-events-none rounded-2xl" />
@@ -529,7 +546,6 @@ function GalleryImageCard({
 
 // ====== Gallery Section ======
 function GallerySection() {
-  // Show only 4 images on mobile, all on desktop
   const [mobileImages, setMobileImages] = useState<string[]>(
     galleryImages.slice(0, 4)
   );
@@ -544,9 +560,9 @@ function GallerySection() {
 
   return (
     <section className="py-4 sm:py-10 md:py-16 bg-gradient-to-br from-[#fff8e1] via-[#f7f5f2] to-[#fff8e1] relative overflow-hidden">
-      {/* Decorative gradient/pattern overlay */}
-      <div className="absolute inset-0 pointer-events-none bg-[url('/imgs/gold-pattern.png')] bg-repeat opacity-10 mix-blend-soft-light" />
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-[#fff8e1]/60 via-transparent to-[#D4AF37]/10" />
+      {/* Decorative gold pattern, subtle and behind content */}
+      <div className="absolute inset-0 pointer-events-none bg-[url('/imgs/gold-pattern.png')] bg-repeat opacity-10 mix-blend-soft-light z-0" />
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-[#fff8e1]/60 via-transparent to-[#D4AF37]/10 z-0" />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="mb-4 sm:mb-10 text-center">
           <h2 className="font-serif text-lg sm:text-2xl md:text-3xl font-bold text-[#1B3A57] drop-shadow-sm mb-2 animate-fade-in">
@@ -600,7 +616,7 @@ function DessertCard({ dessert, delay }: DessertCardProps) {
           src={dessert.image}
           alt={dessert.name}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-500 group-hover:scale-105 group-hover:rotate-1"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-[#D4AF37]/10 pointer-events-none rounded-xl" />
@@ -638,7 +654,6 @@ function DessertCard({ dessert, delay }: DessertCardProps) {
 
 // ====== Featured Desserts Section ======
 function FeaturedDesserts() {
-  // Responsive carousel for mobile, grid for desktop
   const carouselRef = useRef<HTMLDivElement>(null);
 
   // Scroll snap polyfill for smoothness (optional, but helps on some mobile browsers)
@@ -649,9 +664,9 @@ function FeaturedDesserts() {
 
   return (
     <section className="py-4 sm:py-10 md:py-16 bg-gradient-to-br from-[#fff8e1] via-[#f7f5f2] to-[#fff8e1] relative">
-      {/* Decorative gradient/pattern overlay */}
-      <div className="absolute inset-0 pointer-events-none bg-[url('/imgs/gold-pattern.png')] bg-repeat opacity-5 mix-blend-soft-light" />
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-[#fff8e1]/60 via-transparent to-[#D4AF37]/10" />
+      {/* Decorative gold pattern, subtle and behind content */}
+      <div className="absolute inset-0 pointer-events-none bg-[url('/imgs/gold-pattern.png')] bg-repeat opacity-5 mix-blend-soft-light z-0" />
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-[#fff8e1]/60 via-transparent to-[#D4AF37]/10 z-0" />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         <h2 className="text-center font-serif text-lg sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-10 text-[#1B3A57] drop-shadow-[0_2px_8px_rgba(212,175,55,0.15)] animate-fade-in">
           Our Featured Desserts
@@ -701,9 +716,9 @@ function MapSection() {
       ref={ref}
       className="py-4 sm:py-10 md:py-16 bg-gradient-to-br from-[#f7f5f2] via-[#fff8e1] to-[#f7f5f2] relative"
     >
-      {/* Decorative gradient/pattern overlay */}
-      <div className="absolute inset-0 pointer-events-none bg-[url('/imgs/gold-pattern.png')] bg-repeat opacity-5 mix-blend-soft-light" />
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-[#fff8e1]/60 via-transparent to-[#D4AF37]/10" />
+      {/* Decorative gold pattern, subtle and behind content */}
+      <div className="absolute inset-0 pointer-events-none bg-[url('/imgs/gold-pattern.png')] bg-repeat opacity-5 mix-blend-soft-light z-0" />
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-[#fff8e1]/60 via-transparent to-[#D4AF37]/10 z-0" />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
         <h2 className="font-serif text-lg sm:text-2xl md:text-3xl font-bold text-[#1B3A57] mb-2 drop-shadow-sm animate-fade-in">
           Visit Us
@@ -762,7 +777,7 @@ function CTASection() {
       ref={ref}
       className="relative py-4 sm:py-10 md:py-16 flex items-center justify-center"
     >
-      {/* Decorative gradient/pattern overlay */}
+      {/* Decorative gold pattern, subtle and behind content */}
       <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-br from-[#fff8e1] via-[#f7e7b2] to-[#ecd98a]" />
       <div className="absolute inset-0 z-10 rounded-2xl border border-[#D4AF37] pointer-events-none" />
       <svg
@@ -820,9 +835,9 @@ function CTASection() {
 function Footer() {
   return (
     <footer className="bg-[#1B3A57] text-white py-4 sm:py-8 px-4 sm:px-6 mt-0 relative">
-      {/* Decorative gradient/pattern overlay */}
-      <div className="absolute inset-0 pointer-events-none bg-[url('/imgs/gold-pattern.png')] bg-repeat opacity-10 mix-blend-soft-light" />
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-[#fff8e1]/60 via-transparent to-[#D4AF37]/10" />
+      {/* Decorative gold pattern, subtle and behind content */}
+      <div className="absolute inset-0 pointer-events-none bg-[url('/imgs/gold-pattern.png')] bg-repeat opacity-10 mix-blend-soft-light z-0" />
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-[#fff8e1]/60 via-transparent to-[#D4AF37]/10 z-0" />
       <svg
         className="absolute right-4 sm:right-8 top-4 sm:top-8 w-16 sm:w-24 h-16 sm:h-24 opacity-10 pointer-events-none"
         viewBox="0 0 100 100"
@@ -914,8 +929,7 @@ export default function Home() {
         body.menu-blur #__next > div:not(nav):not([id="mobile-menu"]),
         body.menu-blur main,
         body.menu-blur footer {
-          filter: blur(6px) brightness(0.96);
-          transition: filter 0.4s cubic-bezier(.4,0,.2,1);
+          filter: none !important;
           pointer-events: none;
           user-select: none;
         }
