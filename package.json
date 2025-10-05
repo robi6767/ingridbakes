@@ -1,7 +1,7 @@
 {
   "name": "ingrid",
   "version": "0.1.0",
- "private": true,
+  "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
@@ -13,6 +13,7 @@
     "autoprefixer": "^10.4.21",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "crisp-sdk-web": "^1.0.25",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.542.0",
     "next": "15.5.2",
