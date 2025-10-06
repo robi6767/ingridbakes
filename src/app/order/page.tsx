@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Crisp } from 'crisp-sdk-web';
 
 // Cake data structure organized by categories
@@ -28,7 +27,7 @@ const cakeData = {
       { id: "m1", name: "Mandarin – Vanilla Mousse Cake", price: 32, image: "/placeholder.svg", description: "Light vanilla mousse with fresh mandarin flavor." },
       { id: "m2", name: "Strawberry – Mascarpone Mousse Cake", price: 32, image: "/placeholder.svg", description: "Creamy mascarpone mousse with fresh strawberry layers." },
       { id: "m3", name: "Blueberry Yogurt Mousse Cake", price: 32, image: "/placeholder.svg", description: "Tangy yogurt mousse with blueberry compote." },
-      { id: "m4", name: "\"Mango Sunrise\" Mousse Cake", price: 32, image: "/placeholder.svg", description: "Tropical mango mousse with a sunrise gradient effect." },
+      { id: "m4", name: "&quot;Mango Sunrise&quot; Mousse Cake", price: 32, image: "/placeholder.svg", description: "Tropical mango mousse with a sunrise gradient effect." },
       { id: "m5", name: "Truffle Cake", price: 34, image: "/placeholder.svg", description: "Decadent chocolate truffle cake with rich ganache." },
       { id: "m6", name: "Chocolate Mousse Cake", price: 34, image: "/placeholder.svg", description: "Classic chocolate mousse on a light sponge base." },
     ]
@@ -36,15 +35,15 @@ const cakeData = {
   spongeCakes: {
     title: "Sponge Cakes",
     items: [
-      { id: "s1", name: "\"Hazelnut Dream\" (Hazelnut - Milk chocolate – Raspberry)", price: 30, image: "/placeholder.svg", description: "Hazelnut sponge with milk chocolate and raspberry filling." },
-      { id: "s2", name: "\"Fantasy\" (Raspberry – Pistachio)", price: 30, image: "/placeholder.svg", description: "Delicate sponge with raspberry compote and pistachio cream." },
+      { id: "s1", name: "&quot;Hazelnut Dream&quot; (Hazelnut - Milk chocolate – Raspberry)", price: 30, image: "/placeholder.svg", description: "Hazelnut sponge with milk chocolate and raspberry filling." },
+      { id: "s2", name: "&quot;Fantasy&quot; (Raspberry – Pistachio)", price: 30, image: "/placeholder.svg", description: "Delicate sponge with raspberry compote and pistachio cream." },
       { id: "s3", name: "Pistachio Sponge Cake (Pistachio – Coconut)", price: 30, image: "/placeholder.svg", description: "Pistachio-flavored sponge with coconut cream layers." },
       { id: "s4", name: "Brownie Cake (Chocolate – Creamcheese – Pecans)", price: 32, image: "/placeholder.svg", description: "Rich brownie base with cream cheese frosting and pecans." },
       { id: "s5", name: "Strawberry Sponge Cake", price: 30, image: "/placeholder.svg", description: "Light sponge with fresh strawberry filling." },
       { id: "s6", name: "Blueberry Honey Sponge Cake", price: 30, image: "/placeholder.svg", description: "Honey-infused sponge with blueberry filling." },
       { id: "s7", name: "Carrot – Mango Sponge Cake", price: 30, image: "/placeholder.svg", description: "Spiced carrot cake with tropical mango cream." },
       { id: "s8", name: "Plain Vanilla Sponge Cake", price: 30, image: "/placeholder.svg", description: "Classic vanilla sponge with light vanilla cream." },
-      { id: "s9", name: "\"Cherry Cheesecake\" Sponge Cake", price: 30, image: "/placeholder.svg", description: "Sponge layers with cheesecake filling and cherry topping." },
+      { id: "s9", name: "&quot;Cherry Cheesecake&quot; Sponge Cake", price: 30, image: "/placeholder.svg", description: "Sponge layers with cheesecake filling and cherry topping." },
       { id: "s10", name: "Chocolate - Berry (Vegan) Sponge Cake", price: 32, image: "/placeholder.svg", description: "Vegan chocolate sponge with mixed berry filling." },
     ]
   },
@@ -67,13 +66,13 @@ const cakeData = {
     title: "Other Cakes/Tarts/Pies",
     items: [
       { id: "o1", name: "Pecan Tart", price: 29, image: "/placeholder.svg", description: "Sweet tart with caramelized pecans.", perItem: true },
-      { id: "o2", name: "\"Pavlova\" Cake (Meringue – Mascarpone – Strawberries)", price: 35, image: "/placeholder.svg", description: "Delicate meringue base with mascarpone cream and fresh strawberries.", perItem: true },
+      { id: "o2", name: "&quot;Pavlova&quot; Cake (Meringue – Mascarpone – Strawberries)", price: 35, image: "/placeholder.svg", description: "Delicate meringue base with mascarpone cream and fresh strawberries.", perItem: true },
       { id: "o3", name: "Lemon Tart", price: 24, image: "/placeholder.svg", description: "Tangy lemon filling in a buttery pastry shell.", perItem: true },
       { id: "o4", name: "Berry Tart (Blueberry)", price: 30, image: "/placeholder.svg", description: "Buttery tart filled with blueberry compote.", perItem: true },
       { id: "o5", name: "Berry Tart (Mixed Berries)", price: 28, image: "/placeholder.svg", description: "Buttery tart filled with mixed berry compote.", perItem: true },
       { id: "o6", name: "Berry Tart (Vanilla pastry cream - Berries)", price: 32, image: "/placeholder.svg", description: "30cm tart with vanilla pastry cream and fresh berries.", perItem: true },
-      { id: "o7", name: "\"Napoleon\" Cake", price: 35, image: "/placeholder.svg", description: "Classic French mille-feuille with layers of puff pastry and pastry cream." },
-      { id: "o8", name: "\"Forest\" Cake", price: 35, image: "/placeholder.svg", description: "Rich cake with pastry cream, black currant, and almonds." },
+      { id: "o7", name: "&quot;Napoleon&quot; Cake", price: 35, image: "/placeholder.svg", description: "Classic French mille-feuille with layers of puff pastry and pastry cream." },
+      { id: "o8", name: "&quot;Forest&quot; Cake", price: 35, image: "/placeholder.svg", description: "Rich cake with pastry cream, black currant, and almonds." },
       { id: "o9", name: "Black Apple & Caramel Pie", price: 32, image: "/placeholder.svg", description: "Caramelized apple pie with a unique black apple filling." },
       { id: "o10", name: "Chocolate & Cherry Pie", price: 32, image: "/placeholder.svg", description: "Rich chocolate filling with cherry compote in a buttery crust." },
     ]
@@ -136,14 +135,7 @@ export default function OrderPage() {
     setSelectedItems(selectedItems.filter((_, i) => i !== index));
   };
 
-  // Update item quantity
-  const updateItemQuantity = (index, quantity) => {
-    const newItems = [...selectedItems];
-    newItems[index].quantity = quantity;
-    setSelectedItems(newItems);
-  };
-
-  // Update customer info
+  // Handle customer info
   const handleCustomerInfoChange = (e) => {
     setCustomerInfo({
       ...customerInfo,
@@ -287,7 +279,7 @@ export default function OrderPage() {
                               {item.perItem ? ' items' : ''}
                             </span>
                             {item.notes && (
-                              <span className="ml-2 italic">"{item.notes}"</span>
+                              <span className="ml-2 italic">&quot;{item.notes}&quot;</span>
                             )}
                           </div>
                         </div>
