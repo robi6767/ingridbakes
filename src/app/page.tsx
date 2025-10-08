@@ -769,68 +769,6 @@ function MapSection() {
   );
 }
 
-// ====== CTA Section ======
-function CTASection() {
-  const ref = useFadeInOnScroll(600);
-  return (
-    <section
-      ref={ref}
-      className="relative py-4 sm:py-10 md:py-16 flex items-center justify-center"
-    >
-      {/* Decorative gold pattern, subtle and behind content */}
-      <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-br from-[#fff8e1] via-[#f7e7b2] to-[#ecd98a]" />
-      <div className="absolute inset-0 z-10 rounded-2xl border border-[#D4AF37] pointer-events-none" />
-      <svg
-        className="absolute left-4 bottom-4 w-16 sm:w-24 h-16 sm:h-24 opacity-20 z-20 pointer-events-none"
-        viewBox="0 0 100 100"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M20 80 Q50 20 80 80"
-          stroke="#D4AF37"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-        <path
-          d="M35 70 Q50 40 65 70"
-          stroke="#C79C2C"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-      </svg>
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center relative z-30">
-        <h2 className="font-serif text-lg sm:text-2xl md:text-3xl font-bold mb-2 text-[#1B3A57] tracking-wide animate-fade-in">
-          Order a Cake or Pastry
-        </h2>
-        <p
-          className="mt-2 max-w-2xl mx-auto text-sm sm:text-lg md:text-xl text-[#1B3A57]/90 mb-4 sm:mb-8 font-sans animate-fade-in"
-          style={{ animationDelay: "0.2s" }}
-        >
-          Experience the warmth and luxury of Ingrid Bakes.
-        </p>
-        {/* Buttons stack vertically on mobile, inline on desktop */}
-        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-4 w-full">
-          <LuxuryBakeryButton
-            href="https://wa.me/35799127455"
-            external
-            className="w-full sm:w-auto"
-          >
-            Order Now
-          </LuxuryBakeryButton>
-          <LuxuryBakeryButton href="/menu" className="w-full sm:w-auto">
-            View Menu
-          </LuxuryBakeryButton>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ====== Footer ======
 function Footer() {
   return (
@@ -1025,7 +963,6 @@ export default function Home() {
         <GallerySection />
         <FeaturedDesserts />
         <MapSection />
-        <CTASection />
       </main>
       <Footer />
     </div>
